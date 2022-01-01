@@ -1,4 +1,4 @@
-name: Spigot Discord Stripped
+name: Spigot-Discord-Stripped
 version: '${project.version}'
 main: com.beanbeanjuice.spigotdiscordstripped.SpigotDiscordStripped
 api-version: 1.18
@@ -6,3 +6,8 @@ load: STARTUP
 authors: [ beanbeanjuice ]
 description: A Stripped Discord to Minecraft Chat Integration
 website: https://www.github.com/beanbeanjuice/spigot-discord-stripped
+
+commands:
+  discordstripped:
+    description: Sends the help commands for this plugin.
+    usage: /discordstripped
