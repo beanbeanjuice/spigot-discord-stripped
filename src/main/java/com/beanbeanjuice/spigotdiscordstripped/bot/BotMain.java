@@ -4,6 +4,7 @@ import com.beanbeanjuice.spigotdiscordstripped.helper.ChatHelper;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -33,6 +34,7 @@ public class BotMain {
         TEXT_CHANNEL_ID = textChannelID;
 
         jdaBuilder = JDABuilder.createDefault(BOT_TOKEN);
+        jdaBuilder.setStatus(OnlineStatus.IDLE);
         jdaBuilder.setActivity(Activity.playing("Server is starting..."));
 
         jdaBuilder.addEventListeners(new ListenerAdapter() {
@@ -63,11 +65,36 @@ public class BotMain {
         }
     }
 
+    public JDA getJDA() {
+        return jda;
+    }
+
     public static void sendChatMessage(@NotNull String minecraftUsername, @NotNull String minecraftFaceURL, @NotNull String messageContent) {
         EmbedBuilder embedBuilder = new EmbedBuilder();
         embedBuilder.setColor(Color.green);
         embedBuilder.setAuthor(minecraftUsername, null, minecraftFaceURL);
         embedBuilder.setDescription(messageContent);
+        textChannel.sendMessageEmbeds(embedBuilder.build()).queue();
+    }
+
+    public static void sendJoinMessage(@NotNull String minecraftUsername) {
+        EmbedBuilder embedBuilder = new EmbedBuilder();
+        embedBuilder.setColor(Color.green);
+        embedBuilder.setDescription("✅ " + minecraftUsername + " has joined the game.");
+        textChannel.sendMessageEmbeds(embedBuilder.build()).queue();
+    }
+
+    public static void sendQuitMessage(@NotNull String minecraftUsername) {
+        EmbedBuilder embedBuilder = new EmbedBuilder();
+        embedBuilder.setColor(Color.red);
+        embedBuilder.setDescription("❌ " + minecraftUsername + " has left the game.");
+        textChannel.sendMessageEmbeds(embedBuilder.build()).queue();
+    }
+
+    public static void sendServerOnlineMessage() {
+        EmbedBuilder embedBuilder = new EmbedBuilder();
+        embedBuilder.setColor(Color.green);
+        embedBuilder.setDescription("Server is online!");
         textChannel.sendMessageEmbeds(embedBuilder.build()).queue();
     }
 
