@@ -1,3 +1,4 @@
-discord_bot_token: 102381209381209
-chat_channel_id: 32084023480923
+bot_token: "0"
+guild_id: "0"
+text_channel_id: "0"
 chat_string: "{username}: {message}"
