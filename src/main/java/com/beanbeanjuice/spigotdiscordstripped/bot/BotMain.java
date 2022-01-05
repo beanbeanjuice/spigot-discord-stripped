@@ -1,6 +1,7 @@
 package com.beanbeanjuice.spigotdiscordstripped.bot;
 
 import com.beanbeanjuice.spigotdiscordstripped.helper.ChatHelper;
+import com.beanbeanjuice.spigotdiscordstripped.helper.GeneralHelper;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -80,21 +81,25 @@ public class BotMain {
     public static void sendJoinMessage(@NotNull String minecraftUsername) {
         EmbedBuilder embedBuilder = new EmbedBuilder();
         embedBuilder.setColor(Color.green);
-        embedBuilder.setDescription("✅ " + minecraftUsername + " has joined the game.");
+        String message = GeneralHelper.getConfigString("discord_join_message");
+        message = GeneralHelper.replaceUser(message, minecraftUsername);
+        embedBuilder.setDescription(message);
         textChannel.sendMessageEmbeds(embedBuilder.build()).queue();
     }
 
     public static void sendQuitMessage(@NotNull String minecraftUsername) {
         EmbedBuilder embedBuilder = new EmbedBuilder();
         embedBuilder.setColor(Color.red);
-        embedBuilder.setDescription("❌ " + minecraftUsername + " has left the game.");
+        String message = GeneralHelper.getConfigString("discord_leave_message");
+        message = GeneralHelper.replaceUser(message, minecraftUsername);
+        embedBuilder.setDescription(message);
         textChannel.sendMessageEmbeds(embedBuilder.build()).queue();
     }
 
     public static void sendServerOnlineMessage() {
         EmbedBuilder embedBuilder = new EmbedBuilder();
         embedBuilder.setColor(Color.green);
-        embedBuilder.setDescription("Server is online!");
+        embedBuilder.setDescription(GeneralHelper.getConfigString("server_online_message"));
         textChannel.sendMessageEmbeds(embedBuilder.build()).queue();
     }
 

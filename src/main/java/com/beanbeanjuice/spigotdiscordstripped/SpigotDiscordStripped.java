@@ -3,6 +3,7 @@ package com.beanbeanjuice.spigotdiscordstripped;
 import com.beanbeanjuice.spigotdiscordstripped.bot.BotMain;
 import com.beanbeanjuice.spigotdiscordstripped.commands.DiscordStripped;
 import com.beanbeanjuice.spigotdiscordstripped.events.MinecraftListener;
+import com.beanbeanjuice.spigotdiscordstripped.helper.GeneralHelper;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import org.bukkit.Bukkit;
@@ -20,6 +21,7 @@ public final class SpigotDiscordStripped extends JavaPlugin {
     public void onEnable() {
         getLogger().log(Level.INFO, "Starting Spigot Discord Stripped...");
         saveDefaultConfig();
+        GeneralHelper.setPlugin(this);
 
         pluginManager = Bukkit.getPluginManager();
 
