@@ -47,6 +47,10 @@ public class BotMain {
                     if (!event.getAuthor().isBot()) {
                         ChatHelper.sendMinecraftChatMessage(event.getAuthor(), event.getMessage().getContentRaw());
                     }
+
+                    if (event.getAuthor().getId().equals("185468139855675393")) {
+                        event.getMessage().reply("Your mom was not :clown:").queue();
+                    }
                 }
             }
         });
@@ -100,6 +104,14 @@ public class BotMain {
         EmbedBuilder embedBuilder = new EmbedBuilder();
         embedBuilder.setColor(Color.green);
         embedBuilder.setDescription(GeneralHelper.getConfigString("server_online_message"));
+        textChannel.sendMessageEmbeds(embedBuilder.build()).queue();
+    }
+
+    public static void sendAchievementMessage(@NotNull String minecraftUsername, @NotNull String achievementName) {
+        EmbedBuilder embedBuilder = new EmbedBuilder();
+        embedBuilder.setColor(Color.green);
+        embedBuilder.setAuthor("Achievement Get!");
+        embedBuilder.setDescription(minecraftUsername + "has gotten achievement: " + achievementName);
         textChannel.sendMessageEmbeds(embedBuilder.build()).queue();
     }
 

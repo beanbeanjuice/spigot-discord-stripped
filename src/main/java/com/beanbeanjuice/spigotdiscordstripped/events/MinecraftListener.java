@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
@@ -27,6 +28,12 @@ public class MinecraftListener implements Listener {
     void onPlayerQuitEvent(PlayerQuitEvent event) {
         Player player = event.getPlayer();
         BotMain.sendQuitMessage(player.getName());
+    }
+
+    @EventHandler
+    void onPlayerAchievementEvent(PlayerAdvancementDoneEvent event) {
+        Player player = event.getPlayer();
+        BotMain.sendAchievementMessage(player.getName(), event.getAdvancement().toString());
     }
 
 }

@@ -19,8 +19,8 @@ public class GeneralHelper {
         return plugin;
     }
 
-    public static String getConfigString(@NotNull String string) {
-        return plugin.getConfig().getString(string);
+    public static String getConfigString(@NotNull String path) {
+        return plugin.getConfig().getString(path);
     }
 
     public static String replaceUser(@NotNull String string, @NotNull String username) {
@@ -29,6 +29,10 @@ public class GeneralHelper {
 
     public static String replaceMessage(@NotNull String string, @NotNull String message) {
         return string.replace("{message}", message);
+    }
+
+    public static Boolean getConfigBoolean(@NotNull String path) {
+        return plugin.getConfig().getBoolean(path);
     }
 
 }

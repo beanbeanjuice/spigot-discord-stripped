@@ -5,3 +5,4 @@ discord_to_minecraft_chat: "&b&l(Discord)&r &c&l{username}&r: {message}"
 discord_join_message: "✅ {username} has joined the game."
 discord_leave_message: "❌ {username} has left the game."
 server_online_message: "Server is online!"
+broadcast_achievements: true
